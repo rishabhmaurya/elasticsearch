@@ -67,7 +67,11 @@ public class TransportCreateIndexAction extends TransportMasterNodeOperationActi
 
     @Override
     protected ClusterBlockException checkBlock(CreateIndexRequest request, ClusterState state) {
-        return state.blocks().indexBlockedException(ClusterBlockLevel.METADATA, request.index());
+        ClusterBlockException clusterBlockException =  state.blocks().indexBlockedException(ClusterBlockLevel.METADATA, request.index());
+        if (clusterBlockException == null) {
+            return state.blocks().createIndexBlockedException(ClusterBlockLevel.CREATE_NEW_INDEX);
+        }
+        return clusterBlockException;
     }
 
     @Override

@@ -29,9 +29,10 @@ import java.util.EnumSet;
 public enum ClusterBlockLevel {
     READ(0),
     WRITE(1),
-    METADATA(2);
+    METADATA(2),
+    CREATE_NEW_INDEX(3);
 
-    public static final EnumSet<ClusterBlockLevel> ALL = EnumSet.of(READ, WRITE, METADATA);
+    public static final EnumSet<ClusterBlockLevel> ALL = EnumSet.of(READ, WRITE, METADATA, CREATE_NEW_INDEX);
     public static final EnumSet<ClusterBlockLevel> READ_WRITE = EnumSet.of(READ, WRITE);
 
     private final int id;
@@ -51,6 +52,8 @@ public enum ClusterBlockLevel {
             return WRITE;
         } else if (id == 2) {
             return METADATA;
+        } else if (id == 3) {
+            return CREATE_NEW_INDEX;
         }
         throw new ElasticsearchIllegalArgumentException("No cluster block level matching [" + id + "]");
     }
