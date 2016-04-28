@@ -230,7 +230,12 @@ public class TransportClusterUpdateSettingsAction extends TransportMasterNodeAct
                 } else {
                     blocks.removeGlobalBlock(MetaData.CLUSTER_READ_ONLY_BLOCK);
                 }
-
+                boolean createIndexBlocked = metaData.persistentSettings().getAsBoolean(MetaData.SETTING_CREATE_INDEX_BLOCK, false) || metaData.transientSettings().getAsBoolean(MetaData.SETTING_CREATE_INDEX_BLOCK, false);
+                if (createIndexBlocked) {
+                    blocks.addGlobalBlock(MetaData.CLUSTER_CREATE_INDEX_BLOCK);
+                } else {
+                    blocks.removeGlobalBlock(MetaData.CLUSTER_CREATE_INDEX_BLOCK);
+                }
                 return builder(currentState).metaData(metaData).blocks(blocks).build();
             }
         });

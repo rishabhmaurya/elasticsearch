@@ -185,6 +185,13 @@ public class ClusterBlocks extends AbstractDiffable<ClusterBlocks> {
         return false;
     }
 
+    public IndexCreateBlockException createIndexBlockedException(ClusterBlockLevel level) {
+        if (global(level).isEmpty()) {
+            return null;
+        }
+        return new IndexCreateBlockException(ImmutableSet.copyOf(global(level)));
+    }
+
     public ClusterBlockException indicesBlockedException(ClusterBlockLevel level, String[] indices) {
         boolean indexIsBlocked = false;
         for (String index : indices) {

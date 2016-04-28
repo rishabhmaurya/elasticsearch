@@ -608,6 +608,8 @@ public class ElasticsearchException extends RuntimeException implements ToXConte
         exceptions.put(org.elasticsearch.indices.TypeMissingException.class, 137);
         exceptions.put(org.elasticsearch.script.expression.ExpressionScriptCompilationException.class, 138);
         exceptions.put(org.elasticsearch.script.expression.ExpressionScriptExecutionException.class, 139);
+        exceptions.put(org.elasticsearch.cluster.block.IndexCreateBlockException.class, 140);
+
 
         Map<Integer, Constructor<? extends ElasticsearchException>> idToSupplier = new HashMap<>();
         for (Map.Entry<Class<? extends ElasticsearchException>, Integer> e : exceptions.entrySet()) {
