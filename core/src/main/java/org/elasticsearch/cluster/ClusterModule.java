@@ -169,6 +169,7 @@ public class ClusterModule extends AbstractModule {
         registerClusterDynamicSetting(IndicesTTLService.INDICES_TTL_INTERVAL, Validator.TIME);
         registerClusterDynamicSetting(MappingUpdatedAction.INDICES_MAPPING_DYNAMIC_TIMEOUT, Validator.TIME);
         registerClusterDynamicSetting(MetaData.SETTING_READ_ONLY, Validator.EMPTY);
+        registerClusterDynamicSetting(MetaData.SETTING_CREATE_INDEX_BLOCK, Validator.EMPTY);
         registerClusterDynamicSetting(RecoverySettings.INDICES_RECOVERY_FILE_CHUNK_SIZE, Validator.POSITIVE_BYTES_SIZE);
         registerClusterDynamicSetting(RecoverySettings.INDICES_RECOVERY_TRANSLOG_OPS, Validator.INTEGER);
         registerClusterDynamicSetting(RecoverySettings.INDICES_RECOVERY_TRANSLOG_SIZE, Validator.BYTES_SIZE);

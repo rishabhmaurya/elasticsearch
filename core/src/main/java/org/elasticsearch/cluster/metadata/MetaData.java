@@ -112,6 +112,8 @@ public class MetaData implements Iterable<IndexMetaData>, Diffable<MetaData>, Fr
         return (T) customPrototypes.get(type);
     }
 
+
+
     public static <T extends Custom> T lookupPrototypeSafe(String type) {
         //noinspection unchecked
         T proto = (T) customPrototypes.get(type);
@@ -123,9 +125,10 @@ public class MetaData implements Iterable<IndexMetaData>, Diffable<MetaData>, Fr
 
 
     public static final String SETTING_READ_ONLY = "cluster.blocks.read_only";
+    public static final String SETTING_CREATE_INDEX_BLOCK = "cluster.blocks.create_index";
 
     public static final ClusterBlock CLUSTER_READ_ONLY_BLOCK = new ClusterBlock(6, "cluster read-only (api)", false, false, RestStatus.FORBIDDEN, EnumSet.of(ClusterBlockLevel.WRITE, ClusterBlockLevel.METADATA_WRITE));
-
+    public static final ClusterBlock CLUSTER_CREATE_INDEX_BLOCK = new ClusterBlock(10, "cluster create-index blocked (api)", false, false, RestStatus.FORBIDDEN, EnumSet.of(ClusterBlockLevel.CREATE_NEW_INDEX));
     public static final MetaData EMPTY_META_DATA = builder().build();
 
     public static final String CONTEXT_MODE_PARAM = "context_mode";

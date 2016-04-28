@@ -29,9 +29,10 @@ public enum ClusterBlockLevel {
     READ(0),
     WRITE(1),
     METADATA_READ(2),
-    METADATA_WRITE(3);
+    METADATA_WRITE(3),
+    CREATE_NEW_INDEX(4);
 
-    public static final EnumSet<ClusterBlockLevel> ALL = EnumSet.of(READ, WRITE, METADATA_READ, METADATA_WRITE);
+    public static final EnumSet<ClusterBlockLevel> ALL = EnumSet.of(READ, WRITE, METADATA_READ, METADATA_WRITE, CREATE_NEW_INDEX);
     public static final EnumSet<ClusterBlockLevel> READ_WRITE = EnumSet.of(READ, WRITE);
 
     private final int id;
@@ -53,6 +54,8 @@ public enum ClusterBlockLevel {
             return METADATA_READ;
         } else if (id == 3) {
             return METADATA_WRITE;
+        } else if (id == 4) {
+            return CREATE_NEW_INDEX;
         }
         throw new IllegalArgumentException("No cluster block level matching [" + id + "]");
     }
