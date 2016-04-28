@@ -261,6 +261,10 @@ public class GatewayService extends AbstractLifecycleComponent implements Cluste
                         blocks.addGlobalBlock(MetaData.CLUSTER_READ_ONLY_BLOCK);
                     }
 
+                    if (MetaData.SETTING_CREATE_INDEX_BLOCK.get(recoveredState.metaData().settings()) || MetaData.SETTING_CREATE_INDEX_BLOCK.get(currentState.metaData().settings())) {
+                        blocks.addGlobalBlock(MetaData.CLUSTER_CREATE_INDEX_BLOCK);
+                    }
+
                     for (IndexMetaData indexMetaData : recoveredState.metaData()) {
                         metaDataBuilder.put(indexMetaData, false);
                         blocks.addBlocks(indexMetaData);

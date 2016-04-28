@@ -722,7 +722,9 @@ public class ElasticsearchException extends RuntimeException implements ToXConte
         TASK_CANCELLED_EXCEPTION(org.elasticsearch.tasks.TaskCancelledException.class,
             org.elasticsearch.tasks.TaskCancelledException::new, 146, Version.V_5_1_1),
         SHARD_LOCK_OBTAIN_FAILED_EXCEPTION(org.elasticsearch.env.ShardLockObtainFailedException.class,
-                                           org.elasticsearch.env.ShardLockObtainFailedException::new, 147, Version.V_5_0_2);
+                                           org.elasticsearch.env.ShardLockObtainFailedException::new, 147, Version.V_5_0_2),
+        INDEX_CREATE_BLOCK_EXCEPTION(org.elasticsearch.cluster.block.IndexCreateBlockException.class,
+            org.elasticsearch.cluster.block.IndexCreateBlockException::new, 150, UNKNOWN_VERSION_ADDED);
 
 
         final Class<? extends ElasticsearchException> exceptionClass;

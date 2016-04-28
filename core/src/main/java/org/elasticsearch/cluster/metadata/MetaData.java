@@ -164,9 +164,11 @@ public class MetaData implements Iterable<IndexMetaData>, Diffable<MetaData>, Fr
 
     public static final Setting<Boolean> SETTING_READ_ONLY_SETTING =
         Setting.boolSetting("cluster.blocks.read_only", false, Property.Dynamic, Property.NodeScope);
+    public static final Setting<Boolean> SETTING_CREATE_INDEX_BLOCK =
+        Setting.boolSetting("cluster.blocks.create_index", false, Property.Dynamic, Property.NodeScope);
 
     public static final ClusterBlock CLUSTER_READ_ONLY_BLOCK = new ClusterBlock(6, "cluster read-only (api)", false, false, RestStatus.FORBIDDEN, EnumSet.of(ClusterBlockLevel.WRITE, ClusterBlockLevel.METADATA_WRITE));
-
+    public static final ClusterBlock CLUSTER_CREATE_INDEX_BLOCK = new ClusterBlock(10, "cluster create-index blocked (api)", false, false, RestStatus.FORBIDDEN, EnumSet.of(ClusterBlockLevel.CREATE_NEW_INDEX));
     public static final MetaData EMPTY_META_DATA = builder().build();
 
     public static final String CONTEXT_MODE_PARAM = "context_mode";

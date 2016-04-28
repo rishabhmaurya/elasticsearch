@@ -182,6 +182,14 @@ public class ClusterBlocks extends AbstractDiffable<ClusterBlocks> {
         return globalBlocked(level) || blocksForIndex(level, index).isEmpty() == false;
     }
 
+    public IndexCreateBlockException createIndexBlockedException(ClusterBlockLevel level) {
+        if (global(level).isEmpty()) {
+            return null;
+        }
+
+        return new IndexCreateBlockException(unmodifiableSet(global(level)));
+    }
+
     public ClusterBlockException indicesBlockedException(ClusterBlockLevel level, String[] indices) {
         boolean indexIsBlocked = false;
         for (String index : indices) {

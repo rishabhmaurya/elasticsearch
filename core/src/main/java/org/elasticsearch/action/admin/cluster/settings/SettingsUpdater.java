@@ -73,6 +73,13 @@ final class SettingsUpdater {
         } else {
             blocks.removeGlobalBlock(MetaData.CLUSTER_READ_ONLY_BLOCK);
         }
+        boolean createIndexBlocked = MetaData.SETTING_CREATE_INDEX_BLOCK.get(metaData.persistentSettings()) || MetaData.SETTING_CREATE_INDEX_BLOCK.get(metaData.transientSettings());
+
+        if (createIndexBlocked) {
+            blocks.addGlobalBlock(MetaData.CLUSTER_CREATE_INDEX_BLOCK);
+        } else {
+            blocks.removeGlobalBlock(MetaData.CLUSTER_CREATE_INDEX_BLOCK);
+        }
         ClusterState build = builder(currentState).metaData(metaData).blocks(blocks).build();
         Settings settings = build.metaData().settings();
         // now we try to apply things and if they are invalid we fail

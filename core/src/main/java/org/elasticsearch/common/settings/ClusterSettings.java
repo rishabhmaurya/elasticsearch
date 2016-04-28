@@ -191,6 +191,7 @@ public final class ClusterSettings extends AbstractScopedSettings {
                     IndicesTTLService.INDICES_TTL_INTERVAL_SETTING,
                     MappingUpdatedAction.INDICES_MAPPING_DYNAMIC_TIMEOUT_SETTING,
                     MetaData.SETTING_READ_ONLY_SETTING,
+                    MetaData.SETTING_CREATE_INDEX_BLOCK,
                     RecoverySettings.INDICES_RECOVERY_MAX_BYTES_PER_SEC_SETTING,
                     RecoverySettings.INDICES_RECOVERY_RETRY_DELAY_STATE_SYNC_SETTING,
                     RecoverySettings.INDICES_RECOVERY_RETRY_DELAY_NETWORK_SETTING,
