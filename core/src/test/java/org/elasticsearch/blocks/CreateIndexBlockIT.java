@@ -30,7 +30,7 @@ import static org.elasticsearch.common.settings.Settings.settingsBuilder;
 import static org.hamcrest.Matchers.notNullValue;
 
 @ESIntegTestCase.ClusterScope(scope = ESIntegTestCase.Scope.TEST)
-public class CreateIndexBlockTests extends ESIntegTestCase{
+public class CreateIndexBlockIT extends ESIntegTestCase{
 
     @Test
     public void testBlockCreateIndex() {
